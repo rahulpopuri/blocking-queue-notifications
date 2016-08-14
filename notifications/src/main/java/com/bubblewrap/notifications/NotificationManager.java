@@ -57,7 +57,7 @@ public class NotificationManager {
 		}
 		try {
 			this.notifierMap.get(m.getType()).getQueue().put(m);
-			log.info("Added: " + m.getType());
+			log.info("Received new message: " + m.getType());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
