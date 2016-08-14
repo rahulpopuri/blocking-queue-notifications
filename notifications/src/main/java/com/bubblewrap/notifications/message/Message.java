@@ -1,23 +1,20 @@
 package com.bubblewrap.notifications.message;
 
-import com.bubblewrap.notifications.alert.Alert;
-
 public abstract class Message {
 	protected MessageType type;
 	private Object recipient;
-	private Alert data;
+	private Object data;
 
-	/**
-	 * Creates a new message of the specified notification type
-	 * 
-	 * @param type
-	 * @param recipient
-	 * @param text
-	 */
-	public Message(MessageType type, Object recipient, Alert data) {
+	public Message(MessageType type) {
 		this.type = type;
-		this.recipient = recipient;
-		this.data = data;
+	}
+
+	public MessageType getType() {
+		return type;
+	}
+
+	public void setType(MessageType type) {
+		this.type = type;
 	}
 
 	public Object getRecipient() {
@@ -28,20 +25,17 @@ public abstract class Message {
 		this.recipient = recipient;
 	}
 
-	public Alert getAlert() {
+	public Object getData() {
 		return data;
 	}
 
-	public void setAlert(Alert data) {
+	public void setData(Object data) {
 		this.data = data;
 	}
 
-	public MessageType getType() {
-		return type;
-	}
-
-	public void setType(MessageType type) {
-		this.type = type;
+	@Override
+	public String toString() {
+		return "Message [type=" + type + ", recipient=" + recipient + ", data=" + data + "]";
 	}
 
 }

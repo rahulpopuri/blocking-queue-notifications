@@ -8,17 +8,21 @@ import java.util.concurrent.LinkedBlockingQueue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.bubblewrap.notifications.Notifier;
+import com.bubblewrap.notifications.NotifierFactory;
 import com.bubblewrap.notifications.message.Message;
 import com.bubblewrap.notifications.message.MessageType;
+import com.bubblewrap.notifications.utils.PropertyFileUtils;
 
 public class NotificationManager {
 
+	private String[] propertyFiles = new String[] { "email.properties", "text.properties" };
 	private int totalNotifications;
 	private Map<MessageType, Notifier> notifierMap;
 	private Map<MessageType, Thread> threadMap;
 
 	private static NotificationManager INSTANCE;
-	
+
 	private static Logger log = LogManager.getLogger();
 
 	/**
@@ -36,7 +40,7 @@ public class NotificationManager {
 			threadMap.put(type, t);
 			t.start();
 		}
-
+		loadPropertyFiles();
 		this.totalNotifications = 0;
 	}
 
@@ -53,7 +57,7 @@ public class NotificationManager {
 		}
 		try {
 			this.notifierMap.get(m.getType()).getQueue().put(m);
-			log.info("Added: " + m.getAlert() + " type: " + m.getType());
+			log.info("Added: " + m.getType());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,6 +78,13 @@ public class NotificationManager {
 			threadMap.get(t).interrupt();
 		}
 		log.info("Total messages processed: " + getTotalNotifications());
+	}
+	
+	private void loadPropertyFiles(){
+		for(String file : propertyFiles){
+			PropertyFileUtils.getInstance().loadPropertiesFile(file);
+			log.info("Loaded property file: " + file);
+		}
 	}
 
 }

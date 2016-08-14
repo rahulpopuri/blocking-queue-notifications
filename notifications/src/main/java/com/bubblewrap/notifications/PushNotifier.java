@@ -13,12 +13,7 @@ public class PushNotifier extends Notifier {
 
 	@Override
 	protected void process(Message m) {
-		switch (m.getAlert().getType()) {
 		// TODO
-		default:
-			break;
-		}
-
 	}
 
 }

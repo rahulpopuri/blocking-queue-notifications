@@ -1,0 +1,10 @@
+email.from=from_email@gmail.com
+email.user=email_user
+email.password=email_password
+
+# gmail specific
+mail.smtp.host=smtp.gmail.com
+mail.smtp.socketFactory.port=465
+mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
+mail.smtp.auth=true
+mail.smtp.port=465
