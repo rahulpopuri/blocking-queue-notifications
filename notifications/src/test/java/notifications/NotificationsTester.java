@@ -7,15 +7,16 @@ import com.bubblewrap.notifications.message.text.TextMessage;
 
 public class NotificationsTester {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
-		Message email = new EmailMessage("Test subject", "test_email@domain.com", "Test content");
+		Message email = new EmailMessage("Test subject", "bubblewrapstudios@gmail.com", "Test body");
 
-		Message text = new TextMessage("123456789", "Test text message");
+		Message text = new TextMessage("6479688051", "Test text message");
 
 		NotificationManager.getInstance().addMessage(email);
 		NotificationManager.getInstance().addMessage(text);
 
+		Thread.sleep(5000);
 		try {
 			NotificationManager.getInstance().stop();
 		} catch (InterruptedException e) {
