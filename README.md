@@ -1,8 +1,11 @@
 # notifications
 
 This library provides a central "notification manager" to enable users to send various types of messages:
+
 1. Email
+
 2. Text
+
 3. Tweet (coming soon)
 
 # Installation
