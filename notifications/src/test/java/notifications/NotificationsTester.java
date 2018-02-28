@@ -11,7 +11,7 @@ public class NotificationsTester {
 
 		Message email = new EmailMessage("Test subject", "bubblewrapstudios@gmail.com", "Test body");
 
-		Message text = new TextMessage("6479688051", "Test text message");
+		Message text = new TextMessage("1234567890", "Test text message");
 
 		NotificationManager.getInstance().addMessage(email);
 		NotificationManager.getInstance().addMessage(text);
